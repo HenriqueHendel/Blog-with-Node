@@ -12,14 +12,14 @@ router.get("/", confere_admin, (req,res)=>{
 });
 
 router.get("/post", confere_admin, (req, res)=>{
-    res.send("Página de posts")
+    res.send("Posts Page")
 });
 
 router.get("/categorias", confere_admin, (req,res)=>{
     categoria.find().lean().sort({date: "desc"}).then((categorias)=>{
         res.render("./admin/categorias", {categorias:categorias})
     }).catch((err)=>{
-        req.flash("error_msg","Houve um erro ao listar as categorias");
+        req.flash("error_msg","There is a error to list the categories");
         res.redirect("/admin");
     })
 });
@@ -32,11 +32,11 @@ router.post("/categorias/nova", confere_admin, (req,res)=>{
     var erros = [];
 
     if(!req.body.nome || typeof(req.body.nome)==undefined || req.body.nome == null ){
-        erros.push({texto: "Nome inválido"})
+        erros.push({texto: "Invalid Name"})
     };
 
     if(!req.body.slug || typeof(req.body.slug)==undefined || req.body.slug == null ){
-        erros.push({texto: "Slug inválido"})
+        erros.push({texto: "Invalid Slug"})
     };
 
     if(erros.length>0){
@@ -48,10 +48,10 @@ router.post("/categorias/nova", confere_admin, (req,res)=>{
         };
     
         new categoria(novaCategoria).save().then(()=>{
-            req.flash("success_msg","Categoria criada com sucesso");
+            req.flash("success_msg","Category Created Successfuly");
             res.redirect("/admin/categorias");
         }).catch((e)=>{
-            req.flash("error_msg","Houve um erro ao criar uma categoria");
+            req.flash("error_msg","There is a error to create category");
             res.redirect("/admin");
         });
     }
@@ -61,7 +61,7 @@ router.get("/categorias/edit/:id", confere_admin, (req,res)=>{
     categoria.findOne({_id:req.params.id}).lean().then((categoria)=>{
         res.render("./admin/editcategoria", {categoria:categoria})
     }).catch((err)=>{
-        req.flash("error_msg","Esta categoria não existe");
+        req.flash("error_msg","There isn't this category");
         res.redirect("/admin/categorias");
     })
 });
@@ -72,25 +72,25 @@ router.post("/categoria/edit", confere_admin, (req,res)=>{
         categoria.slug = req.body.slug;
 
         categoria.save().then(()=>{
-            req.flash("success_msg","Categoria alterada com sucesso");
+            req.flash("success_msg","Category Edited Successfuly");
             res.redirect("/admin/categorias");
         }).catch((err)=>{
-            req.flash("error_msg","Huve um erro ao editar a categoria");
+            req.flash("error_msg","There is a error to edit this category");
             console.log(err);
             res.redirect("/admin/categorias");
         })
     }).catch((err)=>{
-        req.flash("error_msg","Houve um erro ao editar a categoria");
+        req.flash("error_msg","There is a error to edit this category");
         console.log(err);
     })
 })
 
 router.post("/categoria/deletar", confere_admin, (req,res)=>{
     categoria.remove({_id:req.body.id}).then(()=>{
-        req.flash("success_msg", "Categoria deletada com suceeso");
+        req.flash("success_msg", "Category Deleted Successfuly");
         res.redirect("/admin/categorias");
     }).catch((err)=>{
-        req.flash("error_msg","Houve um erro ao deletar a categoria");
+        req.flash("error_msg","There is a error to delete this category");
         res.redirect("/admin/categorias");
     })
 })
@@ -101,7 +101,7 @@ router.get("/postagens", confere_admin, (req,res) =>{
     postagem.find().lean().sort({data:"desc"}).then((postagens)=>{
         res.render("./admin/postagens", {postagens:postagens});
     }).catch((err)=>{
-        req.flash("error_msg","Houve um erro ao listar as postagens");
+        req.flash("error_msg","There is a error to list the posts");
         res.redirect("/admin");
     })
 })
@@ -110,7 +110,7 @@ router.get("/postagens/add", confere_admin, (req,res)=>{
     categoria.find().lean().then((categoria)=>{
         res.render("./admin/addpostagem", {categorias: categoria});  
     }).catch((err)=>{
-        req.flash("error_msg","Houve um erro ao criar a postagem");
+        req.flash("error_msg","There is a error to create the post");
         res.redirect("/admin");
     })
 })
@@ -119,7 +119,7 @@ router.post("/postagem/nova", confere_admin, (req,res)=>{
     var erros = [];
 
     if(req.body.categoria == "0"){
-        erros.push({texto: "Categoria inválida. Registre uma categoria"});
+        erros.push({texto: "Invalid Category. Please, registre one"});
     }
 
     if(erros.length>0){
@@ -134,10 +134,10 @@ router.post("/postagem/nova", confere_admin, (req,res)=>{
         };
 
         new postagem(novaPostagem).save().then(()=>{
-            req.flash("success_msg","Postagem feita com sucesso");
+            req.flash("success_msg","Post Done Successfuly");
             res.redirect("/admin/postagens");
         }).catch((err)=>{
-            req.flash("error_msg","Não foi possível criar a postagem");
+            req.flash("error_msg","There is a error to create the post");
             res.render("/admin/postagens")
         })
     }
@@ -149,11 +149,11 @@ router.get("/postagens/edit/:id", confere_admin, (req,res)=>{
         categoria.find().lean().then((categorias)=>{
             res.render("./admin/editpostagens", {categorias:categorias,postagens:postagem});
         }).catch((err)=>{
-            req.flash("error_msg","Houve um erro ao listar as categorias");
+            req.flash("error_msg","There is a error to list the categories");
             res.redirect("/admin/postagens");
         })
     }).catch((err)=>{
-        req.flash("error_msg","Não foi possível carregar o formulário de edição");
+        req.flash("error_msg","There is a error to render the edit form");
         res.redirect("/admmin/postagens");
     })
 })
@@ -168,27 +168,27 @@ router.post("/postagem/edit", confere_admin, (req,res)=>{
         postagem.categoria = req.body.categoria;
 
         postagem.save().then(()=>{
-            req.flash("success_msg","Postagem editada com êxito");
+            req.flash("success_msg","Post Edited Successfuly");
             res.redirect("/admin/postagens");
         }).catch((err)=>{
             console.log(err);
-            req.flash("error_msg","Houve um erro ao editar a postagem");
+            req.flash("error_msg","There is a error to edit the Post");
             res.redirect("/admin/postagens");
         })
 
     }).catch((err)=>{
-        req.flash("error_msg","Não foi possível editar a postagem");
+        req.flash("error_msg","There is a error to edit the Post");
         res.redirect("/admin/postagens");
     })
 })
 
 router.get("/postagens/deletar/:id", confere_admin, (req,res)=>{
     postagem.remove({_id:req.params.id}).then(()=>{
-        req.flash("success_msg","Postagem deletada com sucesso");
+        req.flash("success_msg","Post Deleted Successfuly");
         res.redirect("/admin/postagens");
     }).catch((err)=>{
         console.log(err);
-        req.flash("error_msg","Houve um erro ao deletar a postagem");
+        req.flash("error_msg","There is a error to delete the post");
         res.redirect("/admin/postagens");
     })
 })

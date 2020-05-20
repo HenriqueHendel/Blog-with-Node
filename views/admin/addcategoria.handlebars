@@ -2,17 +2,17 @@
     <div class="alert alert-danger">{{texto}}</div>
 {{else}}
 {{/each}}
-<h3>Nova Categoria</h3>
+<h3>New Category</h3>
 <div class="card">
     <div class="card-body">
         <form action="/admin/categorias/nova" method="POST">
-            <label for="nome">Nome</label>
+            <label for="nome">Name</label>
             <input class="form-control" type="text" name="nome" id="nome" placeholder="Nome da Categoria">
             <br>
             <label for="slug">Slug</label>
             <input class="form-control"  type="text" name="slug" id="slug" placeholder="Slug da Categoria">
             <br>
-            <button type="submit" class="btn btn-success">Criar Categoria</button>
+            <button type="submit" class="btn btn-success">Create Category</button>
         </form>
     </div>
 </div>

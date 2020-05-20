@@ -22,7 +22,7 @@
 
     router.get("/logout", (req,res)=>{
         req.logout();
-        req.flash("success_msg","Logout feito com sucesso");
+        req.flash("success_msg","Logout Done");
         res.redirect("/");
     })
 
