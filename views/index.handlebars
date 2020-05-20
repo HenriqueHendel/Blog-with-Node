@@ -1,25 +1,25 @@
 
 <div class="jumbotron">
-  <h1 class="display-4">Bem Vindo</h1>
-  <p class="lead">Acompanhe postagens sobre os mais diversos assuntos de programação! Sinta-se em casa :)</p>
+  <h1 class="display-4">Welcome</h1>
+  <p class="lead"> Here you will find several contents about the programmation world! Have Fun :)</p>        
   <hr class="my-4">
-  <p>Autor: Henrique Hendel Santos Lopes</p>
+  <p>Author: Henrique Hendel Santos Lopes</p>
 </div>
 
 <hr>
 
-<h2>Postagens Recentes</h2>
+<h2>Recently Posts</h2>
 
 {{#each postagens}}
 <div class="card mt-4">
     <div class="card-body">
         <h3>{{titulo}}</h3>
         <p>{{descricao}}</p>
-        <a href="/postagem/{{slug}}"><button class="btn btn-success">Leia Mais</button></a>
+        <a href="/postagem/{{slug}}"><button class="btn btn-success">Read More</button></a>
         <hr>
-        <small>Data de publicação:{{data}}</small>
+        <small>Publication Date: {{data}}</small>
     </div>
 </div>
 {{else}}
-    <h3>Não há postagens</h3>
+    <h3>There is no posts :(</h3>
 {{/each}}

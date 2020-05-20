@@ -2,18 +2,18 @@
     <div class="alert alert-danger">{{texto}}</div>
 {{else}}
 {{/each}}
-<h3>Editar Categoria</h3>
+<h3>Edit Category</h3>
 <div class="card">
     <div class="card-body">
         <form action="/admin/categoria/edit" method="POST">
             <input type="hidden" name="id" value="{{categoria._id}}">
-            <label for="nome">Nome</label>
+            <label for="nome">Name</label>
             <input class="form-control" type="text" name="nome" id="nome" value="{{categoria.nome}}">
             <br>
             <label for="slug">Slug</label>
             <input class="form-control"  type="text" name="slug" id="slug" value="{{categoria.slug}}">
             <br>
-            <button type="submit" class="btn btn-success">Editar Categoria</button>
+            <button type="submit" class="btn btn-success">Edit Category</button>
         </form>
     </div>
 </div>
