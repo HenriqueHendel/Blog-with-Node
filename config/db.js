@@ -1,9 +1,0 @@
-if(process.env.NODE_ENV=="production"){
-    module.exports={
-        URI:"mongodb+srv://blod_admin:blog_admin@cluster0-pl6ie.gcp.mongodb.net/test?retryWrites=true&w=majority"
-    }
-}else{
-    module.exports={
-        URI:"mongodb://localhost/blogapp"
-    }
-}
