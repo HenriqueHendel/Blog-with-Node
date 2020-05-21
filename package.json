@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "It is a simple blog, where the Admin (can be more than one person or only the owner/author of blog) can write, update and delete posts of all categories. The users can access the blog and read the posts",
   "main": "index.js",
-  "engines":{
-    "node":"10.16.2"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
@@ -15,7 +12,6 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
-    "express-handlebars":"^4.5.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "handlebars": "^4.7.6",
