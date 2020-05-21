@@ -15,7 +15,6 @@
     const usuarios = require("./routes/usuario");
     const passport = require("passport");
     require("./config/auth")(passport);
-    const db = require("./config/db");
 
 // Configurações
     // Sessão
@@ -50,7 +49,7 @@
 
     // Moongose
         mongoose.Promise=global.Promise;
-        mongoose.connect(db.URI,{
+        mongoose.connect("mongodb://localhost/blogapp",{
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
@@ -113,7 +112,7 @@
         })
     })
 // Servidor
-    const porta = process.env.PORT || 8081;
+    const porta = 8081;
     app.listen(porta, ()=>{
         console.log("Server ok")
     });
