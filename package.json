@@ -1,7 +1,7 @@
 {
   "name": "blogapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "It is a simple blog, where the Admin (can be more than one person or only the owner/author of blog) can write, update and delete posts of all categories. The users can access the blog and read the posts",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,5 +17,14 @@
     "handlebars": "^4.7.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenriqueHendel/Blog-with-Node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HenriqueHendel/Blog-with-Node/issues"
+  },
+  "homepage": "https://github.com/HenriqueHendel/Blog-with-Node#readme"
 }
